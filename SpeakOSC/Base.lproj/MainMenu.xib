@@ -89,6 +89,11 @@
                                     <action selector="openCommandsDocumentAction:" target="Voe-Tx-rLC" id="5te-BV-nPE"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Close" keyEquivalent="w" id="XWT-5Y-KWB">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="rTZ-m8-olm"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                             <menuItem title="Save…" keyEquivalent="s" id="pxx-59-PXV">
                                 <connections>
@@ -187,7 +192,7 @@
             </items>
         </menu>
         <window title="SpeakOSC" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="122" y="673" width="451" height="277"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -288,8 +293,8 @@
         </window>
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="K3J-do-lC9">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="163" y="199" width="377" height="110"/>
+            <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+            <rect key="contentRect" x="493" y="717" width="377" height="110"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="xqT-1N-9Jv">
                 <rect key="frame" x="0.0" y="0.0" width="377" height="110"/>
