@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8A4C1C00-5335-4DB1-95FE-5C464D097CDA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SpeakOSC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>29F51AED34FA24E0FF2C6C2F988ED93A468E8AFE</key>
+		<string>https://github.com/mrRay/vvopensource.git</string>
+		<key>8E0D2D84754EE67EABD615CD120BF8C472F6A901</key>
+		<string>https://github.com/dlublin/SpeakOSC.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SpeakOSC.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>29F51AED34FA24E0FF2C6C2F988ED93A468E8AFE</key>
+		<string>../../../../vvopensource</string>
+		<key>8E0D2D84754EE67EABD615CD120BF8C472F6A901</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/dlublin/SpeakOSC.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8E0D2D84754EE67EABD615CD120BF8C472F6A901</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8E0D2D84754EE67EABD615CD120BF8C472F6A901</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpeakOSC</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>29F51AED34FA24E0FF2C6C2F988ED93A468E8AFE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>vvopensource</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,832 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46ABBAA61B6F922A00F95A6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAA51B6F922A00F95A6F /* AppDelegate.m */; };
+		46ABBAA81B6F922A00F95A6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAA71B6F922A00F95A6F /* main.m */; };
+		46ABBAAA1B6F922A00F95A6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46ABBAA91B6F922A00F95A6F /* Images.xcassets */; };
+		46ABBAAD1B6F922A00F95A6F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46ABBAAB1B6F922A00F95A6F /* MainMenu.xib */; };
+		46ABBAB91B6F922A00F95A6F /* SpeakOSCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAB81B6F922A00F95A6F /* SpeakOSCTests.m */; };
+		46ABBB351B6F95D800F95A6F /* VVBasics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46ABBAE71B6F92D800F95A6F /* VVBasics.framework */; };
+		46ABBB361B6F95D800F95A6F /* VVOSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46ABBAF51B6F92D800F95A6F /* VVOSC.framework */; };
+		46ABBB381B6F95E100F95A6F /* VVBasics.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46ABBAE71B6F92D800F95A6F /* VVBasics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46ABBB391B6F95E100F95A6F /* VVOSC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46ABBAF51B6F92D800F95A6F /* VVOSC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46ABBAB31B6F922A00F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBA971B6F922A00F95A6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46ABBA9E1B6F922A00F95A6F;
+			remoteInfo = SpeakOSC;
+		};
+		46ABBAE61B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 961EA8ED100E8565007E6C25;
+			remoteInfo = VVBasics;
+		};
+		46ABBAE81B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96C8073A19817C1600FA7825;
+			remoteInfo = VVBufferPool;
+		};
+		46ABBAEA1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96C8071219817BFE00FA7825;
+			remoteInfo = DDMathParser;
+		};
+		46ABBAEC1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96C8072619817C0A00FA7825;
+			remoteInfo = JSONKit;
+		};
+		46ABBAEE1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 964FF27D1981B5AF00CCC808;
+			remoteInfo = VVISFKit;
+		};
+		46ABBAF01B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96B06C1C18BE0ECF000A921C;
+			remoteInfo = VVUIToolbox;
+		};
+		46ABBAF21B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 961745F4100F86B400FB60E6;
+			remoteInfo = VVMIDI;
+		};
+		46ABBAF41B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9628D0C5100E89F700C3944E;
+			remoteInfo = VVOSC;
+		};
+		46ABBAF61B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A7128AF1B61065000528CDB;
+			remoteInfo = MultiClassXPC;
+		};
+		46ABBAF81B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 968FAA86108B6141000E470D;
+			remoteInfo = CrashReporterTestApp;
+		};
+		46ABBAFA1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9656D900100F89BA0064EEA6;
+			remoteInfo = MIDITestApp;
+		};
+		46ABBAFC1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9628D179100E8B4D00C3944E;
+			remoteInfo = OSCTestApp;
+		};
+		46ABBAFE1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96B49302106AEB4C008FB26E;
+			remoteInfo = MIDIviaOSC;
+		};
+		46ABBB001B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 966CCBD81431EFB9006D580F;
+			remoteInfo = OSCQueryTest;
+		};
+		46ABBB021B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96ACD7211706416300138AE6;
+			remoteInfo = OSCPingTester;
+		};
+		46ABBB041B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96C18C2D185A1A740082DE35;
+			remoteInfo = VVBasicsStatic;
+		};
+		46ABBB061B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96C18C3E185A1A7D0082DE35;
+			remoteInfo = VVOSCStatic;
+		};
+		46ABBB081B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A6F726619033A9D00A6FBAD;
+			remoteInfo = VVUIToolboxStatic;
+		};
+		46ABBB0A1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 965C1CAC1983BE7D00111741;
+			remoteInfo = "GLScene Test App";
+		};
+		46ABBB0C1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 965C1CC71983BE9A00111741;
+			remoteInfo = "QCGLScene Test App";
+		};
+		46ABBB0E1B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 965C1CE21983BEA200111741;
+			remoteInfo = "CIGLScene Test App";
+		};
+		46ABBB101B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 965C1CFD198403C300111741;
+			remoteInfo = "ISFGLScene Test App";
+		};
+		46ABBB121B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 96140109198AD46D00335292;
+			remoteInfo = "QT and Hap Test App";
+		};
+		46ABBB141B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A7128D41B610B4700528CDB;
+			remoteInfo = MultiClassXPCTestApp;
+		};
+		46ABBB161B6F92D800F95A6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A7128F81B610B6F00528CDB;
+			remoteInfo = MultiClassXPCTestService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		46ABBB371B6F95DC00F95A6F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				46ABBB381B6F95E100F95A6F /* VVBasics.framework in CopyFiles */,
+				46ABBB391B6F95E100F95A6F /* VVOSC.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		46ABBA9F1B6F922A00F95A6F /* SpeakOSC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakOSC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46ABBAA31B6F922A00F95A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46ABBAA41B6F922A00F95A6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		46ABBAA51B6F922A00F95A6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		46ABBAA71B6F922A00F95A6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46ABBAA91B6F922A00F95A6F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		46ABBAAC1B6F922A00F95A6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		46ABBAB21B6F922A00F95A6F /* SpeakOSCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakOSCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46ABBAB71B6F922A00F95A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46ABBAB81B6F922A00F95A6F /* SpeakOSCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeakOSCTests.m; sourceTree = "<group>"; };
+		46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VVOpenSource.xcodeproj; path = ../../vvopensource/VVOpenSource.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46ABBA9C1B6F922A00F95A6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46ABBB351B6F95D800F95A6F /* VVBasics.framework in Frameworks */,
+				46ABBB361B6F95D800F95A6F /* VVOSC.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46ABBAAF1B6F922A00F95A6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46ABBA961B6F922A00F95A6F = {
+			isa = PBXGroup;
+			children = (
+				46ABBAA11B6F922A00F95A6F /* SpeakOSC */,
+				46ABBAB51B6F922A00F95A6F /* SpeakOSCTests */,
+				46ABBAA01B6F922A00F95A6F /* Products */,
+				46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		46ABBAA01B6F922A00F95A6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46ABBA9F1B6F922A00F95A6F /* SpeakOSC.app */,
+				46ABBAB21B6F922A00F95A6F /* SpeakOSCTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46ABBAA11B6F922A00F95A6F /* SpeakOSC */ = {
+			isa = PBXGroup;
+			children = (
+				46ABBAA41B6F922A00F95A6F /* AppDelegate.h */,
+				46ABBAA51B6F922A00F95A6F /* AppDelegate.m */,
+				46ABBAA91B6F922A00F95A6F /* Images.xcassets */,
+				46ABBAAB1B6F922A00F95A6F /* MainMenu.xib */,
+				46ABBAA21B6F922A00F95A6F /* Supporting Files */,
+			);
+			path = SpeakOSC;
+			sourceTree = "<group>";
+		};
+		46ABBAA21B6F922A00F95A6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46ABBAA31B6F922A00F95A6F /* Info.plist */,
+				46ABBAA71B6F922A00F95A6F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46ABBAB51B6F922A00F95A6F /* SpeakOSCTests */ = {
+			isa = PBXGroup;
+			children = (
+				46ABBAB81B6F922A00F95A6F /* SpeakOSCTests.m */,
+				46ABBAB61B6F922A00F95A6F /* Supporting Files */,
+			);
+			path = SpeakOSCTests;
+			sourceTree = "<group>";
+		};
+		46ABBAB61B6F922A00F95A6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46ABBAB71B6F922A00F95A6F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46ABBAC81B6F92D800F95A6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46ABBAE71B6F92D800F95A6F /* VVBasics.framework */,
+				46ABBAE91B6F92D800F95A6F /* VVBufferPool.framework */,
+				46ABBAEB1B6F92D800F95A6F /* DDMathParser.framework */,
+				46ABBAED1B6F92D800F95A6F /* JSONKit.framework */,
+				46ABBAEF1B6F92D800F95A6F /* VVISFKit.framework */,
+				46ABBAF11B6F92D800F95A6F /* VVUIToolbox.framework */,
+				46ABBAF31B6F92D800F95A6F /* VVMIDI.framework */,
+				46ABBAF51B6F92D800F95A6F /* VVOSC.framework */,
+				46ABBAF71B6F92D800F95A6F /* MultiClassXPC.framework */,
+				46ABBAF91B6F92D800F95A6F /* CrashReporterTestApp.app */,
+				46ABBAFB1B6F92D800F95A6F /* MIDITestApp.app */,
+				46ABBAFD1B6F92D800F95A6F /* OSCTestApp.app */,
+				46ABBAFF1B6F92D800F95A6F /* MIDIviaOSC.app */,
+				46ABBB011B6F92D800F95A6F /* OSCQueryTest.app */,
+				46ABBB031B6F92D800F95A6F /* OSCPingTester.app */,
+				46ABBB051B6F92D800F95A6F /* libVVBasics.a */,
+				46ABBB071B6F92D800F95A6F /* libVVOSC.a */,
+				46ABBB091B6F92D800F95A6F /* libVVUIToolbox.a */,
+				46ABBB0B1B6F92D800F95A6F /* GLScene Test App.app */,
+				46ABBB0D1B6F92D800F95A6F /* QCGLScene Test App.app */,
+				46ABBB0F1B6F92D800F95A6F /* CIGLScene Test App.app */,
+				46ABBB111B6F92D800F95A6F /* ISFGLScene Test App.app */,
+				46ABBB131B6F92D800F95A6F /* QT and Hap Test App.app */,
+				46ABBB151B6F92D800F95A6F /* MultiClassXPCTestApp.app */,
+				46ABBB171B6F92D800F95A6F /* MultiClassXPCTestService.xpc */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46ABBA9E1B6F922A00F95A6F /* SpeakOSC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46ABBABC1B6F922A00F95A6F /* Build configuration list for PBXNativeTarget "SpeakOSC" */;
+			buildPhases = (
+				46ABBA9B1B6F922A00F95A6F /* Sources */,
+				46ABBA9C1B6F922A00F95A6F /* Frameworks */,
+				46ABBA9D1B6F922A00F95A6F /* Resources */,
+				46ABBB371B6F95DC00F95A6F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeakOSC;
+			productName = SpeakOSC;
+			productReference = 46ABBA9F1B6F922A00F95A6F /* SpeakOSC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46ABBAB11B6F922A00F95A6F /* SpeakOSCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46ABBABF1B6F922A00F95A6F /* Build configuration list for PBXNativeTarget "SpeakOSCTests" */;
+			buildPhases = (
+				46ABBAAE1B6F922A00F95A6F /* Sources */,
+				46ABBAAF1B6F922A00F95A6F /* Frameworks */,
+				46ABBAB01B6F922A00F95A6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46ABBAB41B6F922A00F95A6F /* PBXTargetDependency */,
+			);
+			name = SpeakOSCTests;
+			productName = SpeakOSCTests;
+			productReference = 46ABBAB21B6F922A00F95A6F /* SpeakOSCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46ABBA971B6F922A00F95A6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = VIDVOX;
+				TargetAttributes = {
+					46ABBA9E1B6F922A00F95A6F = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					46ABBAB11B6F922A00F95A6F = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 46ABBA9E1B6F922A00F95A6F;
+					};
+				};
+			};
+			buildConfigurationList = 46ABBA9A1B6F922A00F95A6F /* Build configuration list for PBXProject "SpeakOSC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46ABBA961B6F922A00F95A6F;
+			productRefGroup = 46ABBAA01B6F922A00F95A6F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 46ABBAC81B6F92D800F95A6F /* Products */;
+					ProjectRef = 46ABBAC71B6F92D800F95A6F /* VVOpenSource.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				46ABBA9E1B6F922A00F95A6F /* SpeakOSC */,
+				46ABBAB11B6F922A00F95A6F /* SpeakOSCTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		46ABBAE71B6F92D800F95A6F /* VVBasics.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VVBasics.framework;
+			remoteRef = 46ABBAE61B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAE91B6F92D800F95A6F /* VVBufferPool.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VVBufferPool.framework;
+			remoteRef = 46ABBAE81B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAEB1B6F92D800F95A6F /* DDMathParser.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DDMathParser.framework;
+			remoteRef = 46ABBAEA1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAED1B6F92D800F95A6F /* JSONKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = JSONKit.framework;
+			remoteRef = 46ABBAEC1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAEF1B6F92D800F95A6F /* VVISFKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VVISFKit.framework;
+			remoteRef = 46ABBAEE1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAF11B6F92D800F95A6F /* VVUIToolbox.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VVUIToolbox.framework;
+			remoteRef = 46ABBAF01B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAF31B6F92D800F95A6F /* VVMIDI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VVMIDI.framework;
+			remoteRef = 46ABBAF21B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAF51B6F92D800F95A6F /* VVOSC.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VVOSC.framework;
+			remoteRef = 46ABBAF41B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAF71B6F92D800F95A6F /* MultiClassXPC.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MultiClassXPC.framework;
+			remoteRef = 46ABBAF61B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAF91B6F92D800F95A6F /* CrashReporterTestApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CrashReporterTestApp.app;
+			remoteRef = 46ABBAF81B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAFB1B6F92D800F95A6F /* MIDITestApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MIDITestApp.app;
+			remoteRef = 46ABBAFA1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAFD1B6F92D800F95A6F /* OSCTestApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OSCTestApp.app;
+			remoteRef = 46ABBAFC1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBAFF1B6F92D800F95A6F /* MIDIviaOSC.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MIDIviaOSC.app;
+			remoteRef = 46ABBAFE1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB011B6F92D800F95A6F /* OSCQueryTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OSCQueryTest.app;
+			remoteRef = 46ABBB001B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB031B6F92D800F95A6F /* OSCPingTester.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = OSCPingTester.app;
+			remoteRef = 46ABBB021B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB051B6F92D800F95A6F /* libVVBasics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVVBasics.a;
+			remoteRef = 46ABBB041B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB071B6F92D800F95A6F /* libVVOSC.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVVOSC.a;
+			remoteRef = 46ABBB061B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB091B6F92D800F95A6F /* libVVUIToolbox.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVVUIToolbox.a;
+			remoteRef = 46ABBB081B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB0B1B6F92D800F95A6F /* GLScene Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "GLScene Test App.app";
+			remoteRef = 46ABBB0A1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB0D1B6F92D800F95A6F /* QCGLScene Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "QCGLScene Test App.app";
+			remoteRef = 46ABBB0C1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB0F1B6F92D800F95A6F /* CIGLScene Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "CIGLScene Test App.app";
+			remoteRef = 46ABBB0E1B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB111B6F92D800F95A6F /* ISFGLScene Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "ISFGLScene Test App.app";
+			remoteRef = 46ABBB101B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB131B6F92D800F95A6F /* QT and Hap Test App.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "QT and Hap Test App.app";
+			remoteRef = 46ABBB121B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB151B6F92D800F95A6F /* MultiClassXPCTestApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = MultiClassXPCTestApp.app;
+			remoteRef = 46ABBB141B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		46ABBB171B6F92D800F95A6F /* MultiClassXPCTestService.xpc */ = {
+			isa = PBXReferenceProxy;
+			fileType = "wrapper.xpc-service";
+			path = MultiClassXPCTestService.xpc;
+			remoteRef = 46ABBB161B6F92D800F95A6F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46ABBA9D1B6F922A00F95A6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46ABBAAA1B6F922A00F95A6F /* Images.xcassets in Resources */,
+				46ABBAAD1B6F922A00F95A6F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46ABBAB01B6F922A00F95A6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46ABBA9B1B6F922A00F95A6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46ABBAA81B6F922A00F95A6F /* main.m in Sources */,
+				46ABBAA61B6F922A00F95A6F /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46ABBAAE1B6F922A00F95A6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46ABBAB91B6F922A00F95A6F /* SpeakOSCTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46ABBAB41B6F922A00F95A6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46ABBA9E1B6F922A00F95A6F /* SpeakOSC */;
+			targetProxy = 46ABBAB31B6F922A00F95A6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46ABBAAB1B6F922A00F95A6F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46ABBAAC1B6F922A00F95A6F /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46ABBABA1B6F922A00F95A6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		46ABBABB1B6F922A00F95A6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		46ABBABD1B6F922A00F95A6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakOSC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		46ABBABE1B6F922A00F95A6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SpeakOSC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		46ABBAC01B6F922A00F95A6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SpeakOSCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakOSC.app/Contents/MacOS/SpeakOSC";
+			};
+			name = Debug;
+		};
+		46ABBAC11B6F922A00F95A6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SpeakOSCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakOSC.app/Contents/MacOS/SpeakOSC";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46ABBA9A1B6F922A00F95A6F /* Build configuration list for PBXProject "SpeakOSC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46ABBABA1B6F922A00F95A6F /* Debug */,
+				46ABBABB1B6F922A00F95A6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46ABBABC1B6F922A00F95A6F /* Build configuration list for PBXNativeTarget "SpeakOSC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46ABBABD1B6F922A00F95A6F /* Debug */,
+				46ABBABE1B6F922A00F95A6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46ABBABF1B6F922A00F95A6F /* Build configuration list for PBXNativeTarget "SpeakOSCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46ABBAC01B6F922A00F95A6F /* Debug */,
+				46ABBAC11B6F922A00F95A6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46ABBA971B6F922A00F95A6F /* Project object */;
+}
