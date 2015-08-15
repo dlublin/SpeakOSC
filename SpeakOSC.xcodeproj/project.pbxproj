@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		463D41461B7FE5A600DBA9FE /* speakosc_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 463D41451B7FE5A600DBA9FE /* speakosc_icon.icns */; };
+		463D41481B7FE5E400DBA9FE /* speakosc_icon.ai in Resources */ = {isa = PBXBuildFile; fileRef = 463D41471B7FE5E400DBA9FE /* speakosc_icon.ai */; };
 		468FA6E11B717D9200C6A751 /* SOSpeechCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 468FA6E01B717D9200C6A751 /* SOSpeechCommand.m */; };
 		46ABBAA61B6F922A00F95A6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAA51B6F922A00F95A6F /* AppDelegate.m */; };
 		46ABBAA81B6F922A00F95A6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAA71B6F922A00F95A6F /* main.m */; };
@@ -219,6 +221,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		463D41451B7FE5A600DBA9FE /* speakosc_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = speakosc_icon.icns; sourceTree = "<group>"; };
+		463D41471B7FE5E400DBA9FE /* speakosc_icon.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = speakosc_icon.ai; sourceTree = "<group>"; };
 		468FA6DF1B717D9200C6A751 /* SOSpeechCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSpeechCommand.h; sourceTree = "<group>"; };
 		468FA6E01B717D9200C6A751 /* SOSpeechCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSpeechCommand.m; sourceTree = "<group>"; };
 		46ABBA9F1B6F922A00F95A6F /* SpeakOSC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakOSC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,6 +286,8 @@
 				468FA6E01B717D9200C6A751 /* SOSpeechCommand.m */,
 				46ABBAA91B6F922A00F95A6F /* Images.xcassets */,
 				46ABBAAB1B6F922A00F95A6F /* MainMenu.xib */,
+				463D41451B7FE5A600DBA9FE /* speakosc_icon.icns */,
+				463D41471B7FE5E400DBA9FE /* speakosc_icon.ai */,
 				46ABBAA21B6F922A00F95A6F /* Supporting Files */,
 			);
 			path = SpeakOSC;
@@ -611,6 +617,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				46ABBAAA1B6F922A00F95A6F /* Images.xcassets in Resources */,
+				463D41481B7FE5E400DBA9FE /* speakosc_icon.ai in Resources */,
+				463D41461B7FE5A600DBA9FE /* speakosc_icon.icns in Resources */,
 				46ABBAAD1B6F922A00F95A6F /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
