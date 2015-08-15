@@ -17,34 +17,57 @@
 
 - (void)awakeFromNib	{
 	NSLog(@"%s",__func__);
+	speechCommands = [[MutLockArray arrayWithCapacity:0] retain];
+	[self _loadDefaultCommands];
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	NSLog(@"%s",__func__);
 	documentAddress = nil;
+	_startedDictation = NO;
 	
+	//	remove the orderFrontCharacterPalette thing from the edit menu!
+    NSMenu		*edit = [[[[NSApplication sharedApplication] mainMenu] itemWithTitle: @"Edit"] submenu];
+	if ([[edit itemAtIndex: [edit numberOfItems] - 1] action] == NSSelectorFromString(@"orderFrontCharacterPalette:"))
+		[edit removeItemAtIndex: [edit numberOfItems] - 1];
+
 	// Insert code here to initialize your application
-    //	tell the OS not to app nap us!
+	//	tell the OS not to app nap us!
 	NSActivityOptions options = NSActivityAutomaticTerminationDisabled | NSActivityBackground;
 	appNapThing = [[[NSProcessInfo processInfo] beginActivityWithOptions: options reason:@"REALTIME VIDEO ANALYSIS"] retain];
-	
+
+	//	Set up the OSC stuff
 	oscManager = [[OSCManager alloc] initWithInPortClass:[OSCInPort class] outPortClass:nil];
 	//	by default, the osc manager's delegate will be told when osc messages are received
 	[oscManager setDelegate:self];
-	
-    oscOutPort = [oscManager createNewOutputToAddress:@"127.0.0.1" atPort:1235 withLabel:@"Manual Output"];
-	
-	//	register to receive notifications that the list of osc outputs has changed
+
+	oscOutPort = [oscManager createNewOutputToAddress:@"127.0.0.1" atPort:1235 withLabel:@"Manual Output"];
+
+	//	Register to receive notifications that the list of osc outputs has changed
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(oscOutputsChangedNotification:) name:OSCOutPortsChangedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(oscOutputsChangedNotification:) name:OSCInPortsChangedNotification object:nil];
-    [self oscOutputsChangedNotification:nil];
+	[self oscOutputsChangedNotification:nil];
+
+	//	Load the preferences
+	[self _loadPreferences];
+
+	//	Set up the speech stuff and start the timer
+	speechRecognizer = [[NSSpeechRecognizer alloc] init];
+	[speechRecognizer setDelegate: self];
+	[speechRecognizer setListensInForegroundOnly: NO];	
+	
+	//	The first time that the timer fires while the app is in the front it'll start dictation
+	dictationTimer = [[NSTimer scheduledTimerWithTimeInterval:1.25
+                            target:self
+                          selector:@selector(_updateDictationOutput)
+                          userInfo:nil
+                           repeats:YES] retain];
+
     
-    [self _loadPreferences];
-    
-    speechRecognizer = [[NSSpeechRecognizer alloc] init];
-    [speechRecognizer setDelegate: self];
-    [speechRecognizer setListensInForegroundOnly: NO];
-    [self _loadDefaultCommands];
-    [self _startListening];
+}
+- (void)applicationWillBecomeActive:(NSNotification *)aNotification	{
+	NSLog(@"%s",__func__);
+	//	comment this out if you'd prefer to not auto-select the text field when the app becomes active
+	[dictationField performSelectorOnMainThread:@selector(becomeFirstResponder) withObject:nil waitUntilDone:NO];
 }
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
 	// Insert code here to tear down your application
@@ -54,6 +77,28 @@
 	VVRELEASE(speechRecognizer);
 	VVRELEASE(documentAddress);
 	[[NSProcessInfo processInfo] endActivity: appNapThing];
+	
+	/*
+	NSMenu		*edit = [[[[NSApplication sharedApplication] mainMenu] itemWithTitle: @"Edit"] submenu];
+	if ([[edit itemAtIndex: [edit numberOfItems] - 1] action] == NSSelectorFromString(@"stopDictation:"))	{
+		NSMenuItem		*dictationItem = [edit itemAtIndex: [edit numberOfItems] - 1];
+		NSLog(@"\t\tgot %@", dictationItem);
+		dictationTarget = [dictationItem target];
+		dictationAction = [dictationItem action];
+		[dictationTarget performSelectorOnMainThread: dictationAction withObject: dictationItem waitUntilDone: YES];
+	
+		NSLog(@"\t\tdictationAction %@ for target %@", NSStringFromSelector(dictationAction), dictationTarget);
+		//[edit removeItemAtIndex: [edit numberOfItems] - 1];
+	}
+	*/
+	[[NSApplication sharedApplication] stopDictation: nil];
+	_startedDictation = NO;
+	
+	if (dictationTimer)	{
+		[dictationTimer invalidate];
+		[dictationTimer release];
+		dictationTimer = nil;
+	}
 }
 - (void)_loadPreferences	{
 	NSUserDefaults	*def = [NSUserDefaults standardUserDefaults];
@@ -121,6 +166,8 @@
 }
 - (IBAction)openCommandsDocumentAction:(id)sender	{
 	NSOpenPanel			*panel = [NSOpenPanel openPanel];
+	NSArray				*typesArray = [NSArray arrayWithObject:@"sosc"];
+	[panel setAllowedFileTypes:typesArray];
 
 	// This method displays the panel and returns immediately.
 	// The completion handler is called when the user selects an
@@ -129,15 +176,24 @@
 		if (result == NSFileHandlingPanelOKButton) {
 			NSURL		*theDoc = [[panel URLs] objectAtIndex:0];
 			// Open  the document.
-			[self openCommandsDocumentAtURL: theDoc];
+			[self openCommandsDocumentAtURL:theDoc];
 		}
 
 	}];
 }
+- (BOOL)application:(NSApplication *)theApplication	openFile:(NSString *)fileName	{
+	NSLog(@"%s",__func__);
+	NSURL		*theDoc = [NSURL fileURLWithPath:fileName];
+	if (theDoc)	{
+		[self openCommandsDocumentAtURL:theDoc];
+		return YES;
+	}
+	return NO;
+}
 - (IBAction)saveCommandsDocumentAction:(id)sender	{
 	if (documentAddress != nil)	{
 		NSURL		*reloadURL = [[documentAddress copy] autorelease];
-		[self saveCommandsDocumentAtURL: reloadURL];
+		[self saveCommandsDocumentAtURL:reloadURL];
 		return;
 	}
 	NSSavePanel			*savePanel = [NSSavePanel savePanel];
@@ -152,23 +208,25 @@
 }
 - (IBAction)saveAsCommandsDocumentAction:(id)sender	{
 	NSSavePanel			*savePanel = [NSSavePanel savePanel];
+	NSArray				*typesArray = [NSArray arrayWithObject:@"sosc"];
+	[savePanel setAllowedFileTypes:typesArray];
 	
 	[savePanel beginWithCompletionHandler:^(NSInteger result){
 		if (result == NSFileHandlingPanelOKButton) {
 			// Save  the document.
 			NSURL		*theURL = [savePanel URL];
-			[self saveCommandsDocumentAtURL: theURL];
+			[self saveCommandsDocumentAtURL:theURL];
 	  }
 	}];
 }
 - (void)newDocument	{
 	NSLog(@"%s",__func__);
 	[self _stopListening];
-	[speechRecognizer setCommands: [NSArray array]];
-	[self _startListening];
-	[commandsTableView reloadData];
-	[self addCommandButtonUsed: nil];
+	[speechCommands lockRemoveAllObjects];
+	[speechRecognizer setCommands:[NSArray array]];
+	[self _loadDefaultCommands];
 	VVRELEASE(documentAddress);
+	[commandsTableView reloadData];
 }
 - (void)openCommandsDocumentAtURL:(NSURL *)openMe	{
 	NSLog(@"%s",__func__);
@@ -180,12 +238,24 @@
 	if (commandsDocument == nil)
 		return;
 	[self _stopListening];
+	[speechCommands lockRemoveAllObjects];
 	NSArray				*commandsArray = [commandsDocument objectForKey:@"commands"];
 	if (commandsArray != nil)	{
-		[speechRecognizer setCommands: commandsArray];
+		for (NSDictionary *cd in commandsArray)	{
+			NSString			*tp = [cd objectForKey:@"targetPath"];
+			NSString			*cp = [cd objectForKey:@"commandPhrase"];
+			NSNumber			*val = [cd objectForKey:@"value"];
+			SOSpeechCommand		*sc = [SOSpeechCommand createSpeechCommandWithTargetPath:tp
+																		forCommandPhrase:cp
+																		andValue:[val doubleValue]];
+			if (sc)	{
+				[speechCommands lockAddObject:sc];
+			}
+		}
 	}
+	
+	[self _updateSpeechRecognizerCommands];
 	[commandsTableView reloadData];
-	[self _startListening];
 }
 - (void)saveCommandsDocumentAtURL:(NSURL *)writeMe	{
 	NSLog(@"%s",__func__);
@@ -194,7 +264,27 @@
 		return;
 	documentAddress = [writeMe copy];
 	NSMutableDictionary		*writeDict = [NSMutableDictionary dictionaryWithCapacity:0];
-	NSArray					*commandsArray = [speechRecognizer commands];
+	NSArray					*commandsArray = [NSMutableArray arrayWithCapacity:0];
+	
+	[speechCommands rdlock];
+	
+		for (SOSpeechCommand *sc in [speechCommands objectEnumerator])	{
+			NSString				*targetPath = [sc targetPath];
+			NSString				*commandPhrase = [sc commandPhrase];
+			double					value = [sc value];
+			NSMutableDictionary 	*tmpDict = [NSMutableDictionary dictionaryWithCapacity:0];
+			
+			if (targetPath)
+				[tmpDict setObject:targetPath forKey:@"targetPath"];
+			if (commandPhrase)
+				[tmpDict setObject:commandPhrase forKey:@"commandPhrase"];
+			[tmpDict setObject:[NSNumber numberWithDouble:value] forKey:@"value"];
+			
+			[commandsArray addObject:tmpDict];
+		}
+	
+	[speechCommands unlock];	
+	
 	if (commandsArray != nil)	{
 		[writeDict setObject: commandsArray forKey:@"commands"];
 	}
@@ -208,21 +298,38 @@
 
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView	{
-	return [[speechRecognizer commands] count];
+	return [speechCommands lockCount];
 }
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex	{
-	NSArray					*commandsArray = [speechRecognizer commands];
-	return [commandsArray objectAtIndex:rowIndex];
+	SOSpeechCommand		*sc = [speechCommands lockObjectAtIndex:rowIndex];
+	if (aTableColumn == commandWordColumn)	{
+		return [sc commandPhrase];
+	}
+	else if (aTableColumn == targetPathColumn)	{
+		return [sc targetPath];
+	}
+	else if (aTableColumn == valueColumn)	{
+		return [NSNumber numberWithDouble:[sc value]];
+	}
+	return nil;
 }
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex	{
+	SOSpeechCommand		*sc = [speechCommands lockObjectAtIndex:rowIndex];
 	if (aTableColumn == commandWordColumn)	{
-		NSArray				*commandsArray = [speechRecognizer commands];
-		NSMutableArray		*newCommandsArray = [NSMutableArray arrayWithArray: commandsArray];
-
-		[newCommandsArray replaceObjectAtIndex:rowIndex withObject:anObject];
-		[speechRecognizer setCommands: newCommandsArray];
+		[sc setCommandPhrase:anObject];
+		if ([[sc targetPath] isEqualToString:@"Something"])	{
+			[sc setTargetPath:anObject];
+		}
+		[self _updateSpeechRecognizerCommands];
 		[commandsTableView reloadData];
 	}
+	else if (aTableColumn == targetPathColumn)	{
+		[sc setTargetPath:anObject];
+	}
+	else if (aTableColumn == valueColumn)	{
+		[sc setValue:[anObject doubleValue]];
+	}
+	//[dictationField performSelectorOnMainThread:@selector(becomeFirstResponder) withObject:nil waitUntilDone:NO];
 }
 
 /*===================================================================================*/
@@ -231,38 +338,72 @@
 
 
 - (IBAction)addCommandButtonUsed:(id)sender	{
-	NSMutableArray			*newCommandsArray = [NSMutableArray arrayWithArray: [speechRecognizer commands]];
-	//NSString				*newCommand = [self newUniqueCommandForWord: @"Something"];
-	NSString				*newCommand = @"Something";
+	NSString			*newCommand = @"Something";
 	
-	[newCommandsArray addObject: newCommand];
+	SOSpeechCommand		*newSpeechCommand = [SOSpeechCommand createSpeechCommandWithTargetPath:newCommand
+																				forCommandPhrase:newCommand
+																				andValue:1.0];
+	if (newSpeechCommand)	{
+		[speechCommands lockAddObject:newSpeechCommand];
+	}
 	
-	[speechRecognizer setCommands: newCommandsArray];
-	
+	[self _updateSpeechRecognizerCommands];
 	[commandsTableView reloadData];
+	[dictationField performSelectorOnMainThread:@selector(becomeFirstResponder) withObject:nil waitUntilDone:NO];
 }
 - (IBAction)removeCommandButtonUsed:(id)sender	{
-	NSArray				*commandsArray = [speechRecognizer commands];
 	NSIndexSet			*selectedIndexes = [commandsTableView selectedRowIndexes];
-	NSMutableArray		*newCommandsArray = [NSMutableArray arrayWithArray: commandsArray];
 
-	[newCommandsArray removeObjectsAtIndexes:selectedIndexes];
-	[speechRecognizer setCommands: newCommandsArray];
+	[speechCommands lockRemoveObjectsAtIndexes:selectedIndexes];
+	[self _updateSpeechRecognizerCommands];
 	[commandsTableView deselectAll: nil];
 	[commandsTableView reloadData];
+	[dictationField performSelectorOnMainThread:@selector(becomeFirstResponder) withObject:nil waitUntilDone:NO];
+}
+- (IBAction)dictationFieldUpdated:(id)sender	{
+	//NSLog(@"%s",__func__);
+	[self _updateDictationOutput];
+}
+- (void)_updateSpeechRecognizerCommands	{
+	NSMutableArray		*newCommands = [NSMutableArray arrayWithCapacity:0];
+	
+	[self _stopListening];
+	
+	[speechCommands rdlock];
+	
+		for (SOSpeechCommand *ptr in [speechCommands objectEnumerator])	{
+			NSString		*phrase = [ptr commandPhrase];
+			if (phrase)	{
+				[newCommands addObject:phrase];
+			}
+		}
+	
+	[speechCommands unlock];
+	
+	if ([newCommands count] > 0)	{
+		[speechRecognizer setCommands:newCommands];
+		[self _startListening];
+	}
 }
 - (void)_loadDefaultCommands	{
 	NSLog(@"%s",__func__);
-	NSArray			*defaultCommands = [NSArray arrayWithObjects: 	@"Love",
-																	@"Hate",
-																	@"Up",
-																	@"Down",
-																	@"Left",
-																	@"Right",
-																	nil];
-	[speechRecognizer setCommands: defaultCommands];
+	/*
+	NSArray			*strings = [NSArray arrayWithObjects: 	@"Love",
+															@"Hate",
+															@"Up",
+															@"Down",
+															@"Left",
+															@"Right",
+															nil];
+	*/
+	NSArray			*strings = [NSArray arrayWithObject:@"Blathering blatherskite"];
+	NSArray			*newCommands = [SOSpeechCommand speechCommandsFromStringsArray:strings];
 	
-	[commandsTableView reloadData];
+	if (newCommands)	{
+		[speechCommands lockReplaceWithObjectsFromArray:newCommands];
+		[self _updateSpeechRecognizerCommands];
+		[commandsTableView reloadData];
+	}
 }
 - (void)_startListening	{
 	NSLog(@"%s",__func__);
@@ -272,21 +413,75 @@
 	NSLog(@"%s",__func__);
 	[speechRecognizer stopListening];
 }
+
+- (void)_updateDictationOutput	{
+	//NSLog(@"%s",__func__);
+	//	do we need to start speech dictation?
+	if (([[NSApplication sharedApplication] isActive] == YES)&&(_startedDictation==NO))	{
+		NSMenu		*edit = [[[[NSApplication sharedApplication] mainMenu] itemWithTitle: @"Edit"] submenu];
+		if ([[edit itemAtIndex: [edit numberOfItems] - 1] action] == NSSelectorFromString(@"startDictation:"))	{
+			_startedDictation = YES;
+			NSMenuItem		*dictationItem = [edit itemAtIndex: [edit numberOfItems] - 1];
+			//NSLog(@"\t\tgot %@", dictationItem);
+			dictationTarget = [dictationItem target];
+			dictationAction = [dictationItem action];
+			[dictationField becomeFirstResponder];
+			[dictationTarget performSelectorOnMainThread:dictationAction withObject: dictationItem waitUntilDone: YES];
+			//[[NSApplication sharedApplication] startDictation: nil];
+			NSLog(@"\t\tdictationAction %@ for target %@", NSStringFromSelector(dictationAction), dictationTarget);
+			//[edit removeItemAtIndex: [edit numberOfItems] - 1];
+		}
+	}
+	
+	NSString			*newString = [dictationField stringValue];
+		
+	if ((newString != nil) && ([newString length]))	{
+		OSCPacket			*packet = nil;	
+		OSCMessage			*msg1 = nil;
+		NSString			*tmpPath = [oscAddressField stringValue];
+	
+		msg1 = [OSCMessage createWithAddress:[NSString stringWithFormat:@"%@/dictation",tmpPath]];
+		[msg1 addString:newString];
+	
+		packet = [OSCPacket createWithContent:msg1];
+		[oscOutPort sendThisPacket:packet];	
+	
+		[dictationField setStringValue:@""];
+		[resultField setStringValue:newString];
+		NSLog(@"\t\tsent: %@",newString);
+	}
+	
+	//[dictationField becomeFirstResponder];
+}
 - (void)speechRecognizer:(NSSpeechRecognizer *)sender didRecognizeCommand:(id)command	{
 	NSLog(@"%s - %@",__func__, command);
 	OSCPacket			*packet = nil;	
 	OSCMessage			*msg1 = nil;
 	OSCMessage			*msg2 = nil;
-	NSString			*tmpPath = [oscAddressField stringValue];
+	NSString			*tmpPath = nil;
+	NSString			*cmdPath = nil;
+	SOSpeechCommand		*sc = [self _speechCommandForCommandWord:command];
+	double				val = 1.0;
+	
+	if (sc != nil)	{
+		cmdPath = [sc targetPath];
+		val = [sc value];
+	}
 	
 	if (tmpPath == nil)
-		tmpPath = @"/command/";
+		tmpPath = [oscAddressField stringValue];
 	
-	msg1 = [OSCMessage createWithAddress:tmpPath];
+	if (tmpPath == nil)
+		tmpPath = @"/speak";
+	
+	if (cmdPath == nil)
+		cmdPath = command;
+	
+	msg1 = [OSCMessage createWithAddress:[NSString stringWithFormat:@"%@/command",tmpPath]];
 	[msg1 addString:command];
 	
-	msg2 = [OSCMessage createWithAddress:[NSString stringWithFormat:@"%@/%@",tmpPath,command]];
-	[msg2 addFloat:1.0];
+	msg2 = [OSCMessage createWithAddress:[NSString stringWithFormat:@"%@/command/%@",tmpPath,cmdPath]];
+	[msg2 addFloat:val];
 	
 	packet = [OSCPacket createWithContent:msg2];
 	[oscOutPort sendThisPacket:packet];
@@ -294,6 +489,23 @@
 	[oscOutPort sendThisPacket:packet];
 	
 	[resultField setStringValue: command];
+}
+- (SOSpeechCommand *) _speechCommandForCommandWord:(NSString *)command	{
+	if (command == nil)
+		return nil;
+	SOSpeechCommand		*returnMe = nil;
+	[speechCommands rdlock];
+	
+		for (SOSpeechCommand *sc in [speechCommands objectEnumerator])	{
+			if ([[sc commandPhrase] isEqualToString:command])	{
+				returnMe = sc;
+				break;
+			}
+		}
+	
+	[speechCommands unlock];
+	
+	return returnMe;
 }
 
 

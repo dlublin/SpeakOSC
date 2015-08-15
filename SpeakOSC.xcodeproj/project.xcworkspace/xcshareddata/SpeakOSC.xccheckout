@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>29F51AED34FA24E0FF2C6C2F988ED93A468E8AFE</key>
-		<string>../../../../vvopensource</string>
+		<string>../../../vvopensource</string>
 		<key>8E0D2D84754EE67EABD615CD120BF8C472F6A901</key>
 		<string>../..</string>
 	</dict>

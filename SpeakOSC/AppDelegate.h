@@ -9,18 +9,27 @@
 #import <Cocoa/Cocoa.h>
 #import <VVBasics/VVBasics.h>
 #import <VVOSC/VVOSC.h>
+#import "SOSpeechCommand.h"
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSSpeechRecognizerDelegate>	{
 
 	//	Speech backend
 	NSSpeechRecognizer				*speechRecognizer;
+	MutLockArray					*speechCommands;
+	BOOL							_startedDictation;
 
 	//	Speech GUI
 	IBOutlet NSTableView			*commandsTableView;
 	IBOutlet NSTableColumn			*commandWordColumn;
+	IBOutlet NSTableColumn			*targetPathColumn;
+	IBOutlet NSTableColumn			*valueColumn;
 	IBOutlet NSTextField			*resultField;
-
+	
+	IBOutlet NSTextField			*dictationField;
+	id								dictationTarget;
+	SEL								dictationAction;
+	NSTimer							*dictationTimer;
 
 	//	OSC backend
 	OSCManager						*oscManager;
@@ -60,11 +69,15 @@
 //	Speech UI methods
 - (IBAction)addCommandButtonUsed:(id)sender;
 - (IBAction)removeCommandButtonUsed:(id)sender;
+- (IBAction)dictationFieldUpdated:(id)sender;
 
 //	Speech methods
+- (void)_updateSpeechRecognizerCommands;
 - (void)_loadDefaultCommands;
 - (void)_startListening;
 - (void)_stopListening;
+- (void)_updateDictationOutput;
+- (SOSpeechCommand *) _speechCommandForCommandWord:(NSString *)command;
 
 //	OSC UI Methods
 - (void)oscOutputsChangedNotification:(NSNotification *)note;

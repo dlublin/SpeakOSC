@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		468FA6E11B717D9200C6A751 /* SOSpeechCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 468FA6E01B717D9200C6A751 /* SOSpeechCommand.m */; };
 		46ABBAA61B6F922A00F95A6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAA51B6F922A00F95A6F /* AppDelegate.m */; };
 		46ABBAA81B6F922A00F95A6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46ABBAA71B6F922A00F95A6F /* main.m */; };
 		46ABBAAA1B6F922A00F95A6F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46ABBAA91B6F922A00F95A6F /* Images.xcassets */; };
@@ -218,6 +219,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		468FA6DF1B717D9200C6A751 /* SOSpeechCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSpeechCommand.h; sourceTree = "<group>"; };
+		468FA6E01B717D9200C6A751 /* SOSpeechCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSpeechCommand.m; sourceTree = "<group>"; };
 		46ABBA9F1B6F922A00F95A6F /* SpeakOSC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakOSC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46ABBAA31B6F922A00F95A6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46ABBAA41B6F922A00F95A6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 			children = (
 				46ABBAA41B6F922A00F95A6F /* AppDelegate.h */,
 				46ABBAA51B6F922A00F95A6F /* AppDelegate.m */,
+				468FA6DF1B717D9200C6A751 /* SOSpeechCommand.h */,
+				468FA6E01B717D9200C6A751 /* SOSpeechCommand.m */,
 				46ABBAA91B6F922A00F95A6F /* Images.xcassets */,
 				46ABBAAB1B6F922A00F95A6F /* MainMenu.xib */,
 				46ABBAA21B6F922A00F95A6F /* Supporting Files */,
@@ -626,6 +631,7 @@
 			files = (
 				46ABBAA81B6F922A00F95A6F /* main.m in Sources */,
 				46ABBAA61B6F922A00F95A6F /* AppDelegate.m in Sources */,
+				468FA6E11B717D9200C6A751 /* SOSpeechCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
