@@ -15,13 +15,15 @@ Save and Open documents with lists of commands.
 
 
 # Notes
+May require additional download.
+
+Configure microphone input in System Preferences under Dictation and Speech.
+
 Dictation only works when SpeakOSC is the active application and the dictation text field is selected.
 
 Speech Commands work when SpeakOSC is active or in the background.
 
-May require additional download.
-
-Configure microphone input in System Preferences under Dictation and Speech.
+Configure OSC IP / port / base address path in Preferences.
 
 
 # About the code
