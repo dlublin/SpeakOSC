@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>commands</key>
+	<array>
+		<dict>
+			<key>commandPhrase</key>
+			<string>Enable Blur</string>
+			<key>targetPath</key>
+			<string>Blur</string>
+			<key>value</key>
+			<real>1</real>
+		</dict>
+		<dict>
+			<key>commandPhrase</key>
+			<string>Disable Blur</string>
+			<key>targetPath</key>
+			<string>Blur</string>
+			<key>value</key>
+			<real>0.0</real>
+		</dict>
+	</array>
+</dict>
+</plist>
