@@ -1,7 +1,9 @@
-# About SpeakOSC
+# About SpeakOSC for OS X
 Listens for specified speech keyphrases / dictation and outputs the results over OSC.
 
 See video demo here: Also see video demo here: https://vimeo.com/136399791
+
+Download the latest version here: https://github.com/dlublin/SpeakOSC/releases
 
 
 # Features
@@ -16,6 +18,10 @@ Save and Open documents with lists of commands.
 Dictation only works when SpeakOSC is the active application and the dictation text field is selected.
 
 Speech Commands work when SpeakOSC is active or in the background.
+
+May require additional download.
+
+Configure microphone input in System Preferences under Dictation and Speech.
 
 
 # About the code
