@@ -17,6 +17,8 @@ Save and Open documents with lists of commands.
 # Notes
 May require additional download.
 
+System audio output may be automatically muted while dictation is active.
+
 Configure microphone input in System Preferences under Dictation and Speech.
 
 Dictation only works when SpeakOSC is the active application and the dictation text field is selected.
