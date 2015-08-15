@@ -17,6 +17,10 @@
 
 - (void)awakeFromNib	{
 	NSLog(@"%s",__func__);
+	//	Set up the speech stuff and start the timer
+	speechRecognizer = [[NSSpeechRecognizer alloc] init];
+	[speechRecognizer setDelegate: self];
+	[speechRecognizer setListensInForegroundOnly: NO];
 	speechCommands = [[MutLockArray arrayWithCapacity:0] retain];
 	[self _loadDefaultCommands];
 }
@@ -49,11 +53,6 @@
 
 	//	Load the preferences
 	[self _loadPreferences];
-
-	//	Set up the speech stuff and start the timer
-	speechRecognizer = [[NSSpeechRecognizer alloc] init];
-	[speechRecognizer setDelegate: self];
-	[speechRecognizer setListensInForegroundOnly: NO];	
 	
 	//	The first time that the timer fires while the app is in the front it'll start dictation
 	dictationTimer = [[NSTimer scheduledTimerWithTimeInterval:1.25
